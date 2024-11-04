@@ -36,9 +36,9 @@ Matrix4f get_projection_matrix(float eye_fov,
 
 - **实现**
   
-    创建新的旋转矩阵`rotation`,套公式即可。
+    <img src="D:\my\Learning\code\Games101\Assignment1\Assignment1\img\image-20241104162046845.png" alt="image-20241104162046845" style="zoom:80%;" />
     
-    <img src="C:\Users\Nagisa\AppData\Roaming\Typora\typora-user-images\image-20241104162046845.png" alt="image-20241104162046845" style="zoom:67%;" />
+    创建新的旋转矩阵`rotation`,套公式即可。
     
     ```c++
     Matrix4f model = Matrix4f::Identity();
@@ -70,11 +70,11 @@ Matrix4f get_projection_matrix(float eye_fov,
 
   做一次透视投影，再做正交投影，将物体缩放到合适比例并移动到合适位置
 
-  <img src="C:\Users\Nagisa\AppData\Roaming\Typora\typora-user-images\image-20241104162550611.png" alt="image-20241104162550611" style="zoom:80%;"/>
+  <img src="D:\my\Learning\code\Games101\Assignment1\Assignment1\img\image-20241104162018029.png" alt="image-20241104162018029" style="zoom:80%;" />
 
   <center><p>正交变换矩阵</p></center>
 
-  <img src="C:\Users\Nagisa\AppData\Roaming\Typora\typora-user-images\image-20241104163121525.png" alt="image-20241104163121525" style="zoom:70%;" />
+  <img src="D:\my\Learning\code\Games101\Assignment1\Assignment1\img\image-20241104163121525.png" alt="image-20241104163121525" style="zoom:80%;" />
 
   <center>
       <p>
@@ -100,7 +100,7 @@ Matrix4f get_projection_matrix(float eye_fov,
 
 需要参考如下公式：
 
-<img src="C:\Users\Nagisa\AppData\Roaming\Typora\typora-user-images\image-20241104162800842.png" alt="image-20241104162800842" style="zoom:85%;" />
+![image-20241104162018029](D:\my\Learning\code\Games101\Assignment1\Assignment1\img\image-20241104162018029.png)
 
 <center><p>罗德里格旋转公式：表示任意旋转后向量n</p></center>
 
@@ -131,9 +131,10 @@ Matrix4f get_rotation(Vector3f axis, float angle) {//返回绕任意过原点轴
 
 还需要在`main()`&`rasterizer.cpp`中补全相关操作逻辑，这部分仿照着做即可
 
-<img src="C:\Users\Nagisa\AppData\Roaming\Typora\typora-user-images\image-20241104183338605.png" alt="image-20241104183338605" style="zoom:67%;" />
+<img src="D:\my\Learning\code\Games101\Assignment1\Assignment1\img\image-20241104183338605.png" style="zoom:80%;" />
+
+
 
 ## 效果：
 
-<video src="D:\my\Learning\code\Games101\Assignment1\Assignment1\result.mp4"></video>
-
+<video src="D:\my\Learning\code\Games101\Assignment1\Assignment1\img\result.mp4"></video>
