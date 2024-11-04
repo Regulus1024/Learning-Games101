@@ -46,7 +46,7 @@ void rst::rasterizer::draw_line(Vector3f begin, Vector3f end)
     px=2*dy1-dx1;
     py=2*dx1-dy1;
 
-    if(dy1<=dx1)
+    if(dy1<=dx1)//如果线段斜率的绝对值小于等于1就执行下列代码，这样区分是因为像素点坐标是整数，而如果斜率的绝对值小于1，在对线段进行采样时，每次x坐标加1，y坐标要么是加1，要么是减1，要么不变，简化了计算，而当斜率的绝对值大于1时，斜率的倒数的绝对值就小于1，就可以每次对y坐标加1,也是一样的效果
     {
         if(dx>=0)
         {
@@ -60,7 +60,7 @@ void rst::rasterizer::draw_line(Vector3f begin, Vector3f end)
             y=y2;
             xe=x1;
         }
-        Vector3f point = Vector3f(x, y, 1.0f);
+        Vector3f point = Vector3f(x, y, 1.0f);//转换齐次坐标
         set_pixel(point,line_color);
         for(i=0;x<xe;i++)
         {
@@ -86,7 +86,7 @@ void rst::rasterizer::draw_line(Vector3f begin, Vector3f end)
             set_pixel(point,line_color);
         }
     }
-    else
+    else//如果线段斜率的绝对值大于1，基本处理与上面相似，只是是以y坐标为基准处理
     {
         if(dy>=0)
         {
@@ -128,7 +128,7 @@ void rst::rasterizer::draw_line(Vector3f begin, Vector3f end)
     }
 }
 
-auto to_vec4(const Vector3f& v3, float w = 1.0f)
+auto to_vec4(const Vector3f& v3, float w = 1.0f)//转换齐次坐标
 {
     return Vector4f(v3.x(), v3.y(), v3.z(), w);
 }
@@ -165,7 +165,7 @@ void rst::rasterizer::draw(rst::pos_buf_id pos_buffer, rst::ind_buf_id ind_buffe
             vert.x() = 0.5*width*(vert.x()+1.0);
             vert.y() = 0.5*height*(vert.y()+1.0);
             vert.z() = vert.z() * f1 + f2;
-        }
+        }//视口变换
 
         for (int i = 0; i < 3; ++i)
         {
@@ -204,7 +204,13 @@ void rst::rasterizer::set_projection(const Matrix4f& p)
     projection = p;
 }
 
-void rst::rasterizer::clear(rst::Buffers buff)
+//绕任意轴旋转部分
+void rst::rasterizer::set_rodigues(const Matrix4f& r)
+{
+    rodigues = r;
+}
+
+void rst::rasterizer::clear(rst::Buffers buff)//初始化，设置帧缓冲内所有像素颜色为（0，0，0），深度缓冲的所有像素深度为无限大
 {
     if ((buff & rst::Buffers::Color) == rst::Buffers::Color)
     {

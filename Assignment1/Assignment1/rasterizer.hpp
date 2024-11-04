@@ -58,6 +58,7 @@ class rasterizer
     void set_model(const Matrix4f& m);
     void set_view(const Matrix4f& v);
     void set_projection(const Matrix4f& p);
+    void set_rodigues(const Matrix4f& r);
 
     void set_pixel(const Vector3f& point, const Vector3f& color);
 
@@ -75,6 +76,7 @@ class rasterizer
     Matrix4f model;
     Matrix4f view;
     Matrix4f projection;
+    Matrix4f rodigues;
 
     map<int, vector<Vector3f>> pos_buf;
     map<int, vector<Vector3i>> ind_buf;
