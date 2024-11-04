@@ -4,10 +4,11 @@
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup>
     <IncludePath>D:\my\Learning\edit\eigen3;D:\my\Learning\edit\OpenCV\build\include;$(IncludePath)</IncludePath>
+    <LibraryPath>D:\my\Learning\edit\OpenCV\build\x64\vc16\lib;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <ItemDefinitionGroup>
     <Link>
-      <AdditionalDependencies>opencv_world480d.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>opencv_world470d.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup />
